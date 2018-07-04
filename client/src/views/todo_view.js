@@ -16,8 +16,9 @@ TodoView.prototype.render = function (todo) {
   container.appendChild(time);
 
 
-  // const deleteButton = this.createDeleteButton(game._id);
-  // gameContainer.appendChild(deleteButton);
+  const deleteButton = this.createDeleteButton(todo._id);
+  console.log(todo._id);
+  container.appendChild(deleteButton);
 
   this.container.appendChild(container);
 };
@@ -28,16 +29,17 @@ TodoView.prototype.createDetail = function (textContent) {
   return detail;
 };
 
-// GameView.prototype.createDeleteButton = function (gameId) {
-//   const button = document.createElement('button');
-//   button.classList.add('delete-btn');
-//   button.value = gameId;
-//
-//   button.addEventListener('click', (evt) => {
-//     PubSub.publish('GameView:game-delete-clicked', evt.target.value);
-//   });
-//
-//   return button;
-// };
+TodoView.prototype.createDeleteButton = function (todoID) {
+  const button = document.createElement('button');
+  button.classList.add('delete-btn');
+  button.textContent = "Delete"
+  button.value = todoID;
+
+  button.addEventListener('click', (evt) => {
+    PubSub.publish('TodoView:thing-delete-clicked', evt.target.value);
+  });
+
+  return button;
+};
 
 module.exports = TodoView;
