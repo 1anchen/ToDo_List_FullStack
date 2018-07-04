@@ -9,6 +9,8 @@ GridListView.prototype.bindEvents = function () {
   PubSub.subscribe('ToDos:data-loaded', (evt) => {
     this.render(evt.detail);
   });
+
+  
 };
 
 GridListView.prototype.render = function (todos) {

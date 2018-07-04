@@ -17,9 +17,11 @@ TodoView.prototype.render = function (todo) {
 
 
   const deleteButton = this.createDeleteButton(todo._id);
-  console.log(todo._id);
   container.appendChild(deleteButton);
+  this.container.appendChild(container);
 
+  const done = this.createDoneButton(todo._id);
+  container.appendChild(done);
   this.container.appendChild(container);
 };
 
@@ -42,4 +44,16 @@ TodoView.prototype.createDeleteButton = function (todoID) {
   return button;
 };
 
+TodoView.prototype.createDoneButton = function (todoID) {
+  const button = document.createElement('button');
+  button.classList.add('done-btn');
+  button.textContent = "Done"
+  button.value = todoID;
+
+  button.addEventListener('click', (evt) => {
+    PubSub.publish('TodoView:thing-done-clicked', evt.target.value);
+  });
+
+  return button;
+};
 module.exports = TodoView;
