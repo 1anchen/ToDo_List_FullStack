@@ -4,12 +4,13 @@ const ToDos = require('./models/todos.js');
 
 document.addEventListener('DOMContentLoaded', () => {
   const form = document.querySelector('form#todo-form');
-  // const formView = new FormView(form);
-  // formView.bindEvents();
+  const formView = new FormView(form);
+  formView.bindEvents();
 
-  // const container = document.querySelector('div#todolist');
-  // const gridListView = new GridListView(container);
-  // gridListView.bindEvents();
+  const container = document.querySelector('div#todolist');
+
+  const gridListView = new GridListView(container);
+  gridListView.bindEvents();
 
   const todosUrl = 'http://localhost:3000/api/todos';
   const todos = new ToDos(todosUrl);

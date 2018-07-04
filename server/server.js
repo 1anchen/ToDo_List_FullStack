@@ -9,9 +9,7 @@ MongoClient.connect('mongodb://localhost:27017',
   (err, client) => {
     const db = client.db('todo_hub');
     const todoCollection = db.collection('todos');
-    console.log(todoCollection);
     const todoRouter = createRouter(todoCollection);
-    console.log(todoRouter);
     app.use('/api/todos', todoRouter);
 });
 

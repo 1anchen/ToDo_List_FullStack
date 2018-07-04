@@ -16,7 +16,7 @@ ToDos.prototype.getData = function () {
 };
 
 ToDos.prototype.bindEvents = function () {
-  PubSub.subscribe('FormView:todo-submitted', (evt) => {
+  PubSub.subscribe('FormView:form-submitted', (evt) => {
     this.postTodo(evt.detail);
   })
 };
